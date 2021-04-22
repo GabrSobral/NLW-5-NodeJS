@@ -15,9 +15,16 @@ export default {
       return userExists
     }
 
-    const user = usersRepository.create({ email })
+    const user = usersRepository.create({email})
 
     await usersRepository.save(user)
+    return user
+  },
+  async findByEmail(email : string){
+    const usersRepository = getCustomRepository(UsersRepository)
+    
+    const user = await usersRepository.findOne({email})
+
     return user
   }
 }

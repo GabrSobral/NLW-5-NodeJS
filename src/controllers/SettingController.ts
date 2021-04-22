@@ -12,5 +12,20 @@ export default {
     } catch(error){
       return res.status(400).send({ error : error.message})
     }
-  }
+  },
+  async findByUserName(req : Request, res : Response){
+    const { username } = req.params
+    
+    const settings = await SettingsService.findByUsername(username)
+
+    return res.send(settings)
+  },
+  async update(req : Request, res : Response){
+    const { username } = req.params
+    const { chat } = req.body
+    
+    const settings = await SettingsService.update(username, chat)
+
+    return res.send(settings)
+  },
 }

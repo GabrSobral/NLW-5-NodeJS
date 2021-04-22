@@ -6,6 +6,8 @@ import UsersController from './controllers/UsersController'
 const routes = Router()
 
 routes.post('/settings', SettingController.CreateSetting)
+routes.get('/settings/:username', SettingController.findByUserName)
+routes.put('/settings/:username', SettingController.update)
 
 routes.post('/users', UsersController.CreateUser)
 
